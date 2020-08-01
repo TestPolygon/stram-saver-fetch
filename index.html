@@ -5,12 +5,14 @@
     <title>Piping a fetch response to StreamSaver</title>
   </head>
   <body>
+    <input type="text" id="input" style="min-width: 720px">
     <button id="$start">Start</button>
     <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@2.0.2/dist/ponyfill.min.js"></script>
     <script src="./StreamSaver.js"></script>
     <script>
+      input.value = 'https://d8d913s460fub.cloudfront.net/videoserver/cat-test-video-320x240.mp4';
       $start.onclick = () => {
-        const url = 'https://d8d913s460fub.cloudfront.net/videoserver/cat-test-video-320x240.mp4'
+        const url = input.value;
         const fileStream = streamSaver.createWriteStream('cat.mp4')
 
         fetch(url).then(res => {
